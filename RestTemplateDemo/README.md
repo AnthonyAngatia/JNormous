@@ -1,6 +1,6 @@
 ## RestTemplateDemo
 
-This project was primarily intended to experiment around with RestTemplate library, however with time, some concepts were considered.
+This project was primarily intended to experiment around with RestTemplate library, however with time, some ideas were added.
 
 ### Handling RestTemplate errors
 When using RestTemplate you can either get a client-side or a server-side(remote) error.
