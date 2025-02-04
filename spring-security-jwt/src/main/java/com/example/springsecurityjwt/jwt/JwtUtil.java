@@ -20,7 +20,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private String SECRET_KEY = "secret";
+    private String SECRET_KEY = "9a4f2c8d3b7a1e6f45c8a0b3f267d8b1d4e6f3c8a9d2b5f8e3a9c8b5f6v8a3d9";
     SecretKey key = Jwts.SIG.HS256.key().build(); //or HS384.key() or HS512.key()
 
 
@@ -48,7 +48,7 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    private String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, userDetails.getUsername());
     }
@@ -57,7 +57,8 @@ public class JwtUtil {
         return Jwts.builder().claims(claims).subject(subject)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(getSignInKey(), Jwts.SIG.HS256).compact();
+                .signWith(getSignInKey(), Jwts.SIG.HS256)
+                .compact();
     }
 
     private SecretKey getSignInKey() {
